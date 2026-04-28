@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # adding golang bin path to system path
-export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$(go env GOPATH)/bin:~/bin
 
 # make neovim the default editor
 # export EDITOR=nvim

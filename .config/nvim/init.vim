@@ -11,6 +11,8 @@ set keywordprg=:help
 set guicursor=i:ver100-iCursor 	" cursor settings (change to icursor when in insert mode)
 " enables syntax, indentation and netrw plugin
 syntax on
+set autoindent
+set smartindent
 " finding files
 " search down into subfolders
 " provides tab-completion for all file-related tasks
@@ -38,7 +40,9 @@ set undofile
 set undodir=~/.config/nvim/undos//
 set undolevels=1000
 set tabstop=4
+set expandtab
 set wrap
+set expandtab tabstop=4 shiftwidth=4 softtabstop=-1
 
 " --- AUTOCOMMANDS ---
 " always open the help buffer in a vertical split to the right
@@ -73,17 +77,18 @@ map <C-p> :r ~/.config/nvim/.vimbuffer<CR>
 if (has("termguicolors"))
 	set termguicolors
 endif
-highlight IncSearch guifg=#ff5f87 guibg=purple
-highlight Search guifg=purple guibg=#ff5f87
-highlight Visual guibg=darkblue guifg=#a1bded
-highlight NonText guifg=#444454
-highlight Pmenu guibg=black
+" highlight IncSearch guifg=#ff5f87 guibg=purple
+" highlight Search guifg=purple guibg=#ff5f87
+" highlight Visual guibg=darkblue guifg=#a1bded
+" highlight NonText guifg=#444454
+" highlight Pmenu guibg=black
 
 " --- NEOVIM ONLY SETTINGS ---
 " loads lua scripts only if :lua command exists (i.e. neovim)
 if exists(':lua')
     lua require('neovim_config')
-    colo base16-chalk
+    colo default
+    " colo base16-chalk
     " colo base16-grayscale-dark
     " highlight Comment ctermbg=238 guibg=238
 
@@ -91,7 +96,7 @@ if exists(':lua')
 	" colo zenbones
 	" highlight @variable guifg=#ab9cff
 	" highlight @field guifg=#f57a7a
-	highlight Normal ctermbg=NONE guibg=NONE guifg=white
+	" highlight Normal ctermbg=NONE guibg=NONE guifg=white
 	highlight Visual guibg=darkblue guifg=cyan
 
 	" clojure specific semantic highlights
@@ -103,13 +108,13 @@ if exists(':lua')
 	" changing Conjure map for evaluating selection
 	" vnoremap <M-\> :ConjureEvalVisual<CR>
 	" lua vim.api.nvim_set_keymap("v", "<M-\\>", ":ConjureEvalVisual<CR>", { silent = true })
-	lua vim.api.nvim_set_keymap("v", "<localleader>ef", ":ConjureEvalVisual<CR>", { silent = true })
+	" lua vim.api.nvim_set_keymap("v", "<localleader>ef", ":ConjureEvalVisual<CR>", { silent = true })
 
 	" enamble wrapping in Conjure HUD/log
-	let g:conjure#log#wrap = 1
+	" let g:conjure#log#wrap = 1
 
 	" HUD border style
-	let g:conjure#log#hud#border = "none"
+	" let g:conjure#log#hud#border = "none"
 
 	" change python Conjure REPL command to ipython
 	" let g:conjure#client#python#stdio#command = "ipython -i"
